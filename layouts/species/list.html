@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="container">
+  <h1>All Species</h1>
+  
+  {{ if .Data.Pages }}
+    <ul>
+      {{ range .Data.Pages }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p>No species found yet. Add some from the admin panel!</p>
+  {{ end }}
+</div>
+{{ end }}

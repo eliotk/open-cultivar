@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="container">
+  <h1>Welcome to Open Cultivar</h1>
+  <p>A community-driven database of plant cultivars.</p>
+  
+  <h2>Featured Species</h2>
+  <ul>
+    {{ with site.GetPage "species/elderberry.md" }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+    {{ with site.GetPage "species/apple.md" }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+
+  <!-- Netlify Identity Login Button -->
+  <div data-netlify-identity-button></div>
+
+</div>
+{{ end }}

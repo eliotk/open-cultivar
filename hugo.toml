@@ -1,0 +1,17 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Open Cultivar'
+theme = ''
+
+[params]
+  description = "A community-driven database of plant cultivars."
+
+[menu]
+  [[menu.main]]
+    name = 'Cultivars'
+    pageRef = '/cultivars'
+    weight = 10
+  [[menu.main]]
+    name = 'Species'
+    pageRef = '/species'
+    weight = 20
