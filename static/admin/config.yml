@@ -28,9 +28,6 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Description", name: "description", widget: "markdown" }
       - label: "Parent Species"
         name: "species_link"
         widget: relation
@@ -38,6 +35,9 @@ collections:
         search_fields: ["title"]
         value_field: "title"
         display_fields: ["title"]
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
 
   - name: "logs"
     label: "Logs"
