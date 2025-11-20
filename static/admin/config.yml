@@ -2,7 +2,9 @@ backend:
   name: git-gateway
   branch: main # or master, depending on your repository
   delete: true # Enable deletion of entries
-  auth_scope: admin
+
+allowed_roles:
+  - admin
 
 publish_mode: editorial_workflow
 
