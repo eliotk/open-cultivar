@@ -26,7 +26,7 @@ collections:
     label: "Cultivars / Varieties"
     folder: "content/cultivars"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - label: "Parent Species"
         name: "species_link"
