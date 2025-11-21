@@ -3,16 +3,6 @@
   <article>
     <h1>{{ .Title }}</h1>
 
-    {{ with .Params.image }}
-      <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px;">
-    {{ end }}
-
-    <div>{{ .Content }}</div>
-
-    {{ with .Params.description }}
-      <div>{{ . | markdownify }}</div>
-    {{ end }}
-
     {{/* Link to Parent Species */}}
     {{ with .Params.species_link }}
         {{ $species_page := $.Site.GetPage (printf "species/%s" (urlize .)) }}
@@ -21,6 +11,16 @@
         {{ else }}
             <p><strong>Parent Species:</strong> {{ . }} (Page not found)</p>
         {{ end }}
+    {{ end }}
+
+    {{ with .Params.image }}
+      <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px;">
+    {{ end }}
+
+    <div>{{ .Content }}</div>
+
+    {{ with .Params.description }}
+      <div>{{ . | markdownify }}</div>
     {{ end }}
 
     <hr>

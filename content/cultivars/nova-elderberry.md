@@ -1,6 +1,7 @@
 ---
 species_link: Elderberry
 title: Nova
+slug: nova-elderberry
 image: /images/uploads/novablackelder.webp
 description: >-
   The 'Nova' elderberry ($Sambucus\ canadensis\ 'Nova'$) is a popular,
