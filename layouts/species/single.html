@@ -12,6 +12,45 @@
     {{ end }}
 
     <div>{{ .Content }}</div>
+
+    <hr>
+
+    <h2>Cultivars</h2>
+
+    {{ $species_title := .Title }}
+    {{ $cultivars := where site.RegularPages "Section" "cultivars" }}
+    {{ $related_cultivars := where $cultivars ".Params.species_link" "eq" $species_title }}
+
+    <div class="gallery">
+    {{ if gt (len $related_cultivars) 0 }}
+      {{ range $related_cultivars }}
+        <div class="gallery-item">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.image }}
+            <a href="{{ .RelPermalink }}">
+              <img src="{{ . | relURL }}" alt="{{ .Title }}" style="width: 200px; height: auto;">
+            </a>
+          {{ end }}
+          <p>{{ .Params.description | truncate 100 }}</p>
+        </div>
+      {{ end }}
+    {{ else }}
+      <p>No cultivars listed for this species yet. Be the first to add one!</p>
+    {{ end }}
+    </div>
+
   </article>
 </div>
+
+<style>
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.gallery-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+</style>
 {{ end }}
