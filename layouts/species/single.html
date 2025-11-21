@@ -26,9 +26,9 @@
       {{ range $related_cultivars }}
         <div class="gallery-item">
           <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ with .Params.image }}
+          {{ if .Params.image }}
             <a href="{{ .RelPermalink }}">
-              <img src="{{ . | relURL }}" alt="{{ .Title }}" style="width: 200px; height: auto;">
+              <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 200px; height: auto;">
             </a>
           {{ end }}
           <p>{{ .Params.description | truncate 100 }}</p>
