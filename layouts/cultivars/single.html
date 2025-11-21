@@ -14,7 +14,9 @@
     {{ end }}
 
     {{ with .Params.image }}
-      <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px;">
+      <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px; cursor: pointer;">
+      </a>
     {{ end }}
 
     <div>{{ .Content }}</div>
@@ -38,8 +40,8 @@
         <div class="gallery-item">
           <h3>{{ .Title }}</h3>
           {{ with .Params.image }}
-            <a href="{{ .RelPermalink }}">
-              <img src="{{ . | relURL }}" alt="{{ .Title }}" style="width: 200px; height: auto;">
+            <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">
+              <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto; cursor: pointer;">
             </a>
           {{ end }}
           <p><em>by {{ .Params.author | default "Anonymous" }}</em></p>

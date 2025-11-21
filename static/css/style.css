@@ -102,6 +102,14 @@ article img {
     border-radius: 4px;
 }
 
+article a img {
+    transition: opacity 0.3s ease;
+}
+
+article a:hover img {
+    opacity: 0.85;
+}
+
 /* Lists */
 ul, ol {
     margin-left: 2rem;
@@ -138,6 +146,11 @@ hr {
     width: 100%;
     height: auto;
     margin: 0 0 0.5rem 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item a:hover img {
+    opacity: 0.85;
 }
 
 .gallery-item h3 {
