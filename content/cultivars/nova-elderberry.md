@@ -4,9 +4,11 @@ title: Nova
 slug: nova-elderberry
 image: /images/uploads/novablackelder.webp
 description: >-
-  The 'Nova' elderberry ($Sambucus\ canadensis\ 'Nova'$) is a popular,
-  easy-to-grow cultivar of the American Elderberry, known for its reliable yield
-  and sweet, large fruit.
+  The 'Nova' elderberry (Sambucus canadensis) is a popular, easy-to-grow
+  cultivar of the American Elderberry, known for its reliable yield and sweet,
+  large fruit. A seedling of Adams No. 2, it was selected in 1946 and later
+  released by the AgCanada Research Station in Kentville, Nova Scotia, in 1959.
+  The variety was named after its province of origin.
 
 
   * Fruit Characteristics: Produces abundant clusters of deep purple-black berries that are generally considered sweet and are excellent for processing into juice, jams, jellies, and wine. They ripen in late summer/early August, often earlier than the 'York' variety.
