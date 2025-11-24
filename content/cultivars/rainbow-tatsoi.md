@@ -1,7 +1,6 @@
 ---
 species_link: Tatsoi
-title: Rainbow Tats
-oi
+title: Rainbow Tatsoi
 slug: rainbow-tatsoi
 description: |-
   ### General Information
