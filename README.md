@@ -1,6 +1,6 @@
 # Open Cultivar
 
-Open Cultivar is a community-driven database for plant cultivars and varieties. This project is built as a high-performance Jamstack website.
+Open Cultivar is a community-driven database for plant cultivars and varieties. This project is built as a high-performance Jamstack website running at [opencultivar.com](https://opencultivar.com).
 
 ## Tech Stack
 
