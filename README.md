@@ -14,3 +14,16 @@ This project utilizes the following technologies:
 ## How it Works
 
 Content is managed through the Decap CMS interface, which is accessible at `/admin`. When a user submits new content (like a new cultivar or a log entry), Decap CMS creates a new file in the git repository. The `editorial_workflow` mode is enabled, which means that submissions from non-technical users will be created as pull requests in the GitHub repository, awaiting approval before being published to the live site.
+
+## Contributing
+
+Contributions to Open Cultivar are welcome! Here's how you can help:
+
+1.  **Fork the repository** on GitHub.
+2.  **Clone your fork** locally.
+3.  **Create a new branch** for your changes (e.g. a new species, cultivar, log entry or code change).
+4.  **Make your changes** and commit them.
+5.  **Push your changes** to your fork.
+6.  **Submit a Pull Request** to the main repository.
+
+Please ensure your code follows the existing style and conventions. If you find a bug or have a feature request, please open an issue.
