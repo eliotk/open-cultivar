@@ -44,7 +44,17 @@ collections:
           hint: "Enter as: cultivar-name-species-name (e.g., nova-elderberry)",
           required: true,
         }
-      - { label: "Image", name: "image", widget: "image" }
+      - label: "Resources"
+        name: "resources"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Credit", name: "credit", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "License", name: "license", widget: "string", required: false }
+          - { label: "Link", name: "link", widget: "string", required: false }
       - { label: "Description", name: "description", widget: "markdown" }
 
   - name: "logs"

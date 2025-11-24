@@ -2,7 +2,13 @@
 species_link: Elderberry
 title: Nova
 slug: nova-elderberry
-image: /images/uploads/novablackelder.webp
+resources:
+  - src: /images/uploads/novablackelder.webp
+    title: ""
+    credit: ""
+    description: ""
+    license: ""
+    link: ""
 description: >-
   The 'Nova' elderberry (Sambucus canadensis) is a popular, easy-to-grow
   cultivar of the American Elderberry, known for its reliable yield and sweet,

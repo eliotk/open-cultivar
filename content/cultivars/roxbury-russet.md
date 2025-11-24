@@ -2,9 +2,15 @@
 species_link: Apple
 title: Roxbury Russet
 slug: roxbury-russet
-image: /images/uploads/pxl_20210515_151228032.jpg
+resources:
+  - src: /images/uploads/pxl_20210515_151228032.jpg
+    title: "Roxbury Russet blossoms in spring!"
+    credit: "Eliot Kristan"
+    description: ""
+    license: "CC BY-SA 4.0"
+    link: ""
 description: >-
-  
+
   The Roxbury Russet is an American heirloom apple, believed to be the oldest named cultivar originating in the United States (circa 17th century, Roxbury, MA).
 
 

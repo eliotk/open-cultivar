@@ -2,13 +2,13 @@
 <div class="container">
   <article>
     <h1>{{ .Title }}</h1>
-    
+
     {{ with .Params.scientific_name }}
-      <p><em>Scientific Name: {{ . }}</em></p>
+    <p><em>Scientific Name: {{ . }}</em></p>
     {{ end }}
 
     {{ with .Params.image }}
-      <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px;">
+    <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px;">
     {{ end }}
 
     <div>{{ .Content }}</div>
@@ -22,35 +22,42 @@
     {{ $related_cultivars := where $cultivars ".Params.species_link" "eq" $species_title }}
 
     <div class="gallery">
-    {{ if gt (len $related_cultivars) 0 }}
+      {{ if gt (len $related_cultivars) 0 }}
       {{ range $related_cultivars }}
-        <div class="gallery-item">
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ if .Params.image }}
-            <a href="{{ .RelPermalink }}">
-              <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 200px; height: auto;">
-            </a>
-          {{ end }}
-          <p>{{ .Params.description | truncate 100 }}</p>
-        </div>
+      <div class="gallery-item">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ if .Params.resources }}
+        {{ range first 1 .Params.resources }}
+        <a href="{{ $.RelPermalink }}">
+          <img src="{{ .src | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto;">
+        </a>
+        {{ end }}
+        {{ else if .Params.image }}
+        <a href="{{ .RelPermalink }}">
+          <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 200px; height: auto;">
+        </a>
+        {{ end }}
+        <p>{{ .Params.description | truncate 100 }}</p>
+      </div>
       {{ end }}
-    {{ else }}
+      {{ else }}
       <p>No cultivars listed for this species yet. Be the first to add one!</p>
-    {{ end }}
+      {{ end }}
     </div>
 
   </article>
 </div>
 
 <style>
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-}
-.gallery-item {
-  border: 1px solid #ccc;
-  padding: 1rem;
-}
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
 </style>
 {{ end }}

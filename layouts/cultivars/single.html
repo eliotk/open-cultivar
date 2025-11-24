@@ -5,24 +5,52 @@
 
     {{/* Link to Parent Species */}}
     {{ with .Params.species_link }}
-        {{ $species_page := $.Site.GetPage (printf "species/%s" (urlize .)) }}
-        {{ if $species_page }}
-            <p><strong>Parent Species:</strong> <a href="{{ $species_page.RelPermalink }}">{{ . }}</a></p>
-        {{ else }}
-            <p><strong>Parent Species:</strong> {{ . }} (Page not found)</p>
-        {{ end }}
+    {{ $species_page := $.Site.GetPage (printf "species/%s" (urlize .)) }}
+    {{ if $species_page }}
+    <p><strong>Parent Species:</strong> <a href="{{ $species_page.RelPermalink }}">{{ . }}</a></p>
+    {{ else }}
+    <p><strong>Parent Species:</strong> {{ . }} (Page not found)</p>
+    {{ end }}
     {{ end }}
 
-    {{ with .Params.image }}
-      <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px; cursor: pointer;">
+    {{/* Display images from resources array */}}
+    {{ with .Params.resources }}
+    {{ range . }}
+    <figure
+      style="display: inline-block; margin: 1rem 0; border: 1px solid #ddd; padding: 0 0.5rem 0.5rem 0.5rem; background: #fff;">
+      <a href="{{ .src | relURL }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ .src | relURL }}" alt="{{ $.Title }}" style="max-width: 300px; display: block; cursor: pointer;">
       </a>
+      {{ if .title }}
+      <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: #666; text-align: center;">
+        {{ .title }}
+      </figcaption>
+      {{ end }}
+      {{ if or .description .credit .license .link }}
+      <div
+        style="font-size: 0.85rem; color: #666; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #eee;">
+        {{ with .description }}<div style="margin-bottom: 0.25rem;">{{ . }}</div>{{ end }}
+        {{ with .credit }}<div style="margin-bottom: 0.25rem;"><strong>Credit:</strong> {{ . }}</div>{{ end }}
+        {{ with .license }}<div style="margin-bottom: 0.25rem;"><strong>License:</strong> {{ . }}</div>{{ end }}
+        {{ with .link }}<div><strong>Source:</strong> <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ .
+            }}</a></div>{{ end }}
+      </div>
+      {{ end }}
+    </figure>
+    {{ end }}
+    {{ end }}
+
+    {{/* Fallback for old image field */}}
+    {{ with .Params.image }}
+    <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="max-width: 300px; cursor: pointer;">
+    </a>
     {{ end }}
 
     <div>{{ .Content }}</div>
 
     {{ with .Params.description }}
-      <div>{{ . | markdownify }}</div>
+    <div>{{ . | markdownify }}</div>
     {{ end }}
 
     <hr>
@@ -35,36 +63,37 @@
     {{ $related_logs := where $logs ".Params.cultivar_link" "eq" $cultivar_title }}
 
     <div class="gallery">
-    {{ if gt (len $related_logs) 0 }}
+      {{ if gt (len $related_logs) 0 }}
       {{ range $related_logs }}
-        <div class="gallery-item">
-          <h3>{{ .Title }}</h3>
-          {{ with .Params.image }}
-            <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">
-              <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto; cursor: pointer;">
-            </a>
-          {{ end }}
-          <p><em>by {{ .Params.author | default "Anonymous" }}</em></p>
-          <p>{{ .Params.description | truncate 100 }}</p>
-        </div>
+      <div class="gallery-item">
+        <h3>{{ .Title }}</h3>
+        {{ with .Params.image }}
+        <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto; cursor: pointer;">
+        </a>
+        {{ end }}
+        <p><em>by {{ .Params.author | default "Anonymous" }}</em></p>
+        <p>{{ .Params.description | truncate 100 }}</p>
+      </div>
       {{ end }}
-    {{ else }}
+      {{ else }}
       <p>No community logs for this cultivar yet. Be the first to submit one!</p>
-    {{ end }}
+      {{ end }}
     </div>
 
   </article>
 </div>
 
 <style>
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-}
-.gallery-item {
-  border: 1px solid #ccc;
-  padding: 1rem;
-}
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
 </style>
 {{ end }}
