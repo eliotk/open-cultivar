@@ -1,15 +1,49 @@
 {{ define "main" }}
 <div class="container">
   <h1>All Species</h1>
-  
+
   {{ if .Data.Pages }}
-    <ul>
+    <div class="species-list">
       {{ range .Data.Pages }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        <div class="species-item">
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Params.scientific_name }}
+            <p class="scientific-name"><em>{{ . }}</em></p>
+          {{ end }}
+          {{ with .Params.description }}
+            <p class="description">{{ . }}</p>
+          {{ end }}
+        </div>
       {{ end }}
-    </ul>
+    </div>
   {{ else }}
     <p>No species found yet. Add some from the admin panel!</p>
   {{ end }}
 </div>
+
+<style>
+.species-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.species-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+.species-item:last-child {
+  border-bottom: none;
+}
+.species-item h2 {
+  margin: 0 0 0.5rem 0;
+}
+.scientific-name {
+  margin: 0 0 0.5rem 0;
+  color: #666;
+}
+.description {
+  margin: 0;
+  color: #333;
+}
+</style>
 {{ end }}
