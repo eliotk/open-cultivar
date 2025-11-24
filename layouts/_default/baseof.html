@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ .Title }} | Open Cultivar</title>
-    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
 
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | Open Cultivar</title>
+  <link rel="stylesheet" href="{{ " /css/style.css" | relURL }}">
+
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
+
 <body>
 
-    <header>
-        <nav>
-            <a href="/">Home</a>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </header>
 
-    <main>
-        {{ block "main" . }}{{ end }}
-    </main>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
 
-    <footer>
-        <p>&copy; {{ now.Year }} Open Cultivar</p>
-    </footer>
+  <footer>
+    <p>&copy; {{ now.Year }} Open Cultivar</p>
+    <p>Contributors are welcome! <a href="https://github.com/eliotk/open-cultivar">Github Repository</a></p>
+  </footer>
 
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 
 </body>
+
 </html>
