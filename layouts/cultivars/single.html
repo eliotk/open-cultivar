@@ -61,26 +61,38 @@
     {{ $cultivar_title := .Title }}
     {{ $logs := where site.RegularPages "Section" "logs" }}
     {{ $related_logs := where $logs ".Params.cultivar_link" "eq" $cultivar_title }}
+    {{ $sorted_logs := $related_logs.ByDate.Reverse }}
 
-    <div class="gallery">
-      {{ if gt (len $related_logs) 0 }}
-      {{ range $related_logs }}
-      <div class="gallery-item">
-        <h3>{{ .Title }}</h3>
+    <div class="community-logs">
+      {{ if gt (len $sorted_logs) 0 }}
+      {{ range $sorted_logs }}
+      <div class="log-entry">
+        <div class="log-header">
+          <span class="log-author"><strong>{{ .Params.author | default "Anonymous" }}</strong></span>
+          <span class="log-date">{{ .Date.Format "January 2, 2006" }}</span>
+        </div>
+        <div class="log-content">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ .Content }}
+        </div>
         {{ if .Params.resources }}
-        {{ range first 1 .Params.resources }}
-        <a href="{{ .src | relURL }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ .src | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto; cursor: pointer;">
-        </a>
-        {{ end }}
+        <div class="log-images">
+          {{ range .Params.resources }}
+          <figure>
+            <a href="{{ .src | relURL }}" target="_blank" rel="noopener noreferrer">
+              <img src="{{ .src | relURL }}" alt="{{ .title | default " Log image" }}">
+            </a>
+            {{ if .title }}<figcaption>{{ .title }}</figcaption>{{ end }}
+          </figure>
+          {{ end }}
+        </div>
         {{ else if .Params.image }}
-        <a href="{{ .Params.image | relURL }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ .Params.image | relURL }}" alt="{{ $.Title }}"
-            style="width: 200px; height: auto; cursor: pointer;">
-        </a>
+        <div class="log-images">
+          <a href="{{ .Params.image | relURL }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+          </a>
+        </div>
         {{ end }}
-        <p><em>by {{ .Params.author | default "Anonymous" }}</em></p>
-        <p>{{ .Params.description | truncate 100 }}</p>
       </div>
       {{ end }}
       {{ else }}
@@ -92,15 +104,60 @@
 </div>
 
 <style>
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
+  .community-logs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  .gallery-item {
-    border: 1px solid #ccc;
-    padding: 1rem;
+  .log-entry {
+    border: 1px solid #eee;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .log-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+
+  .log-content h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+
+  .log-content h3 a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .log-content h3 a:hover {
+    text-decoration: underline;
+  }
+
+  .log-images {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .log-images img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+
+  .log-images figure {
+    margin: 0;
   }
 </style>
 {{ end }}
