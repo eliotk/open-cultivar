@@ -67,9 +67,16 @@
       {{ range $related_logs }}
       <div class="gallery-item">
         <h3>{{ .Title }}</h3>
-        {{ with .Params.image }}
-        <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ . | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto; cursor: pointer;">
+        {{ if .Params.resources }}
+        {{ range first 1 .Params.resources }}
+        <a href="{{ .src | relURL }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ .src | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto; cursor: pointer;">
+        </a>
+        {{ end }}
+        {{ else if .Params.image }}
+        <a href="{{ .Params.image | relURL }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ .Params.image | relURL }}" alt="{{ $.Title }}"
+            style="width: 200px; height: auto; cursor: pointer;">
         </a>
         {{ end }}
         <p><em>by {{ .Params.author | default "Anonymous" }}</em></p>
