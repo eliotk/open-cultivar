@@ -25,15 +25,30 @@ header nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header nav a {
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    gap: 2rem;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
     color: #3d2817;
     text-decoration: none;
     font-size: 1.1rem;
+    font-weight: bold;
 }
 
-header nav a:hover {
+.nav-links a:hover {
     text-decoration: underline;
 }
 
@@ -111,7 +126,8 @@ article a:hover img {
 }
 
 /* Lists */
-ul, ol {
+ul,
+ol {
     margin-left: 2rem;
     margin-bottom: 1rem;
 }
