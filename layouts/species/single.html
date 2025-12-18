@@ -27,8 +27,9 @@
       <div class="gallery-item">
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
         {{ if .Params.resources }}
+        {{ $cultivar_link := .RelPermalink }}
         {{ range first 1 .Params.resources }}
-        <a href="{{ $.RelPermalink }}">
+        <a href="{{ $cultivar_link }}">
           <img src="{{ .src | relURL }}" alt="{{ $.Title }}" style="width: 200px; height: auto;">
         </a>
         {{ end }}
