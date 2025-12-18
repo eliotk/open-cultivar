@@ -8,5 +8,5 @@ resources:
     credit: Baker Creek Heirloom Seeds
     license:
 description: >-
-  Amazing color and flavor! Potentially the world's richest plant-based source of anthocyanin, this carrot from India is so rich in the dark-pigmented antioxidant that the roots are practically black! It is especially well suited for the south and performs better than other carrots in extreme heat, though it tastes better when harvested in the fall or winter. Its flavor is richer and sweeter than a regular orange carrot, and the color deepens as carrots mature, even bleeding like a beet when cut. This variety is best suited for planting in summer, June to Sept., in North America.
+  Originating from India, Pusa Asita Black is a visually striking carrot variety distinguished by its deep, almost black skin and flesh. It is notable for its exceptionally high anthocyanin content, making it a potent source of antioxidants. While it demonstrates remarkable heat tolerance suitable for Southern climates, the roots develop their sweetest, richest flavor when harvested in cooler fall or winter months. The intense dark pigmentation runs deep and can bleed like a beet when cut. In North America, this variety is typically planted in the summer for a late-season harvest.
 ---
