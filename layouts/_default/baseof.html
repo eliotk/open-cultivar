@@ -7,8 +7,6 @@
   <title>{{ .Title }} | Open Cultivar</title>
   <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Netlify Identity Widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -31,18 +29,6 @@
     <p>&copy; {{ now.Year }} Open Cultivar | Contributors are welcome! <a
         href="https://github.com/eliotk/open-cultivar">Github Repository</a></p>
   </footer>
-
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
 
 </body>
 
