@@ -1,7 +1,7 @@
 ---
 title: Bronze Arrowhead Seedlings
 date: 2026-03-24T12:00:00-05:00
-author: User
+author: eliotk
 cultivar_link: Bronze Arrowhead
 resources: []
 ---
